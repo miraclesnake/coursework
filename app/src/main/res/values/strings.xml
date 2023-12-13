@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">CourseWork</string>
+    <string name="name">Поточний контроль</string>
+    <string name="log_in">Вхід у систему</string>
+    <string name="sign_up">Реєстрація</string>
+    <string name="login">enter login</string>
+    <string name="password">enter password</string>
+    <string name="codeword">enter code word</string>
+    <string name="admin">Admin page</string>
+    <string name="log_in_page">Log in page</string>
+    <string name="teacher">Викладач</string>
+    <string name="student">Студент</string>
+    <string name="sign_up_page">Sign up page</string>
+    <string name="sign_up_name">enter name</string>
+    <string name="sign_up_surname">enter surname</string>
+    <string name="sign_up_middlename">enter middle name</string>
+    <string-array name="groups">
+        <item>IK-13</item>
+        <item>IK-12</item>
+        <item>IK-11</item>
+        <item>IA-11</item>
+        <item>IA-12</item>
+        <item>IA-13</item>
+    </string-array>
+    <string-array name="positions">
+        <item>Викладач</item>
+        <item>Асистент</item>
+        <item>Доцент</item>
+    </string-array>
+</resources>
