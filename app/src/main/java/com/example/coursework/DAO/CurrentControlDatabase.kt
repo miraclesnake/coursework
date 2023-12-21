@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 
 @Database(
     entities = [Student::class, StudentGroup::class, Subject::class,
-        Teacher::class, WorkLoad::class, Lesson::class], version = 2
+        Teacher::class, WorkLoad::class, Lesson::class], version = 1, exportSchema = false
 )
 abstract class CurrentControlDatabase : RoomDatabase() {
     abstract fun getStudentDAO(): StudentDAO
@@ -44,22 +44,22 @@ abstract class CurrentControlDatabase : RoomDatabase() {
         }
     }
 
-    private class GroupCallback(private val scope: CoroutineScope): RoomDatabase.Callback(){
+    private class GroupCallback(private val scope: CoroutineScope): Callback(){
         override fun onCreate(db: SupportSQLiteDatabase) {
             super.onCreate(db)
             INSTANCE?.let {
                 scope.launch {
                     val groupDao = it.getStudentGroupDAO()
-                    groupDao.upsertStudentGroup(StudentGroup("IK", 11))
-                    groupDao.upsertStudentGroup(StudentGroup("IK", 12))
-                    groupDao.upsertStudentGroup(StudentGroup("IK", 13))
-                    groupDao.upsertStudentGroup(StudentGroup("IA", 11))
-                    groupDao.upsertStudentGroup(StudentGroup("IA", 12))
-                    groupDao.upsertStudentGroup(StudentGroup("IA", 13))
-                    groupDao.upsertStudentGroup(StudentGroup("IA", 14))
-                    groupDao.upsertStudentGroup(StudentGroup("IC", 11))
-                    groupDao.upsertStudentGroup(StudentGroup("IC", 12))
-                    groupDao.upsertStudentGroup(StudentGroup("IC", 13))
+                    groupDao.upsertStudentGroup(StudentGroup(academicProgram = "IK", groupNumber = 11))
+                    groupDao.upsertStudentGroup(StudentGroup(academicProgram = "IK", groupNumber = 12))
+                    groupDao.upsertStudentGroup(StudentGroup(academicProgram = "IK", groupNumber = 13))
+                    groupDao.upsertStudentGroup(StudentGroup(academicProgram = "IA", groupNumber = 11))
+                    groupDao.upsertStudentGroup(StudentGroup(academicProgram = "IA", groupNumber = 12))
+                    groupDao.upsertStudentGroup(StudentGroup(academicProgram = "IA", groupNumber = 13))
+                    groupDao.upsertStudentGroup(StudentGroup(academicProgram = "IA", groupNumber = 14))
+                    groupDao.upsertStudentGroup(StudentGroup(academicProgram = "IC", groupNumber = 11))
+                    groupDao.upsertStudentGroup(StudentGroup(academicProgram = "IC", groupNumber = 12))
+                    groupDao.upsertStudentGroup(StudentGroup(academicProgram = "IC", groupNumber =  13))
                 }
             }
         }

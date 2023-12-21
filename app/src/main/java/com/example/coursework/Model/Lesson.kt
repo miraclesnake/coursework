@@ -20,11 +20,10 @@ import androidx.room.PrimaryKey
     ]
 )
 data class Lesson(
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
     val studentID: Int,
     val subjectID: Int,
     val studentGrade: Double,
     val date: String
-) {
-    @PrimaryKey(autoGenerate = true)
-    var id: Int = 0
-}
+)

@@ -6,7 +6,7 @@ import android.os.Bundle
 import com.example.coursework.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    lateinit var main: ActivityMainBinding
+    private lateinit var main: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         main = ActivityMainBinding.inflate(layoutInflater)
@@ -21,11 +21,5 @@ class MainActivity : AppCompatActivity() {
             val signUpIntent = Intent(this, SignUpPage::class.java)
             startActivity(signUpIntent)
         }
-/*
-        main.LogInAdmin.setOnClickListener {
-            val logInAdminIntent = Intent(this, LogInAdmin::class.java)
-            startActivity(logInAdminIntent)
-        }
- */
     }
 }

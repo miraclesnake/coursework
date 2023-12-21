@@ -14,13 +14,12 @@ import androidx.room.PrimaryKey
     )]
 )
 data class Student(
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
     val name: String,
     val surname: String,
     val middleName: String,
     val groupID: Int,
     val login: String,
     val password: String
-) {
-    @PrimaryKey(autoGenerate = true)
-    var id: Int = 0
-}
+)

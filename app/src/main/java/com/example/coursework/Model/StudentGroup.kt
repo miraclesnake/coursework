@@ -5,9 +5,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "student_group")
 data class StudentGroup(
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
     val academicProgram: String,
     val groupNumber: Int
-) {
-    @PrimaryKey(autoGenerate = true)
-    val id: Int = 0
-}
+)

@@ -23,10 +23,9 @@ import androidx.room.PrimaryKey
         )]
 )
 data class WorkLoad(
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
     val studentGroupId: Int,
     val subjectId: Int,
     val teacherId: Int
-) {
-    @PrimaryKey(autoGenerate = true)
-    val workLoadId: Int = 0
-}
+)

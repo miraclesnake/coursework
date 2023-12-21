@@ -1,5 +1,6 @@
 package com.example.coursework.DAO
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Query
@@ -30,6 +31,7 @@ interface StudentDAO {
     suspend fun deleteAllStudentsFromGroup(academicProgram: String, groupNumber: Int)
 
     @Query("select * from student where login = :login and password = :password")
-    suspend fun getStudentByLoginPassword(login: String, password: String): Student
+    fun getStudentByLoginPassword(login: String, password: String): LiveData<Student>
+
 
 }

@@ -7,6 +7,7 @@ import androidx.room.Query
 import androidx.room.Update
 import androidx.room.Upsert
 import com.example.coursework.Model.StudentGroup
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface StudentGroupDAO {
@@ -18,7 +19,7 @@ interface StudentGroupDAO {
     suspend fun deleteStudentGroup(studentGroup: StudentGroup)
 
     @Query("select * from student_group")
-    fun getAllGroups()
+    fun getAllGroups(): Flow<List<StudentGroup>>
 
 
 }

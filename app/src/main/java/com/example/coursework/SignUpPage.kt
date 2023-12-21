@@ -1,7 +1,6 @@
 package com.example.coursework
 
 import android.content.Intent
-import android.media.midi.MidiDevice
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -16,23 +15,23 @@ import com.example.coursework.Model.Teacher
 import com.example.coursework.ViewModel.StudentViewModel
 import com.example.coursework.ViewModel.TeacherViewModel
 import com.example.coursework.databinding.ActivitySignUpPageBinding
-import kotlinx.coroutines.CoroutineScope
 
 class SignUpPage : AppCompatActivity() {
     private lateinit var sign: ActivitySignUpPageBinding
-    lateinit var studentViewModel: StudentViewModel
-    lateinit var teacherViewModel: TeacherViewModel
-    lateinit var currentControlDatabase: CurrentControlDatabase
+    private lateinit var studentViewModel: StudentViewModel
+    private lateinit var teacherViewModel: TeacherViewModel
+    private lateinit var currentControlDatabase: CurrentControlDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sign = ActivitySignUpPageBinding.inflate(layoutInflater)
         setContentView(sign.root)
 
-        currentControlDatabase = CurrentControlApplication().database
+        val currentControlApplication = (application as CurrentControlApplication)
+        val currentControlDatabase = currentControlApplication.database
 
-        studentViewModel = ViewModelProvider(this)[StudentViewModel::class.java]
-        teacherViewModel = ViewModelProvider(this)[TeacherViewModel::class.java]
+        studentViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(application)).get(StudentViewModel::class.java)
+        teacherViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(application)).get(TeacherViewModel::class.java)
 
         val arrayAdapterGroups = ArrayAdapter.createFromResource(applicationContext, R.array.groups,
             android.R.layout.simple_spinner_item)
@@ -57,7 +56,7 @@ class SignUpPage : AppCompatActivity() {
 
         sign.signUpUser.setOnClickListener {
             insertDataToDatabase()
-            val intent = Intent(this, LogInPage::class.java)
+            val intent = Intent(applicationContext, LogInPage::class.java)
             startActivity(intent)
         }
     }
@@ -71,8 +70,9 @@ class SignUpPage : AppCompatActivity() {
         if(sign.isTeacher.isChecked){
             val position = sign.spinnerForTeacherPosition.selectedItem.toString()
             if (inputCheck(firstName, surname, middleName, login, password)){
-                val teacher = Teacher( firstName, surname,
-                    middleName, position, login, password, false)
+                val teacher = Teacher(name = firstName, surname =  surname,
+                    middleName = middleName, position = position,
+                    login = login, password = password, isAdmin = false)
                 teacherViewModel.upsertTeacher(teacher)
             }
         }else{
@@ -81,8 +81,10 @@ class SignUpPage : AppCompatActivity() {
             val studentGroupNumber = studentGroupString.subSequence(3,5).toString().toInt()
 
             if(inputCheck(firstName, surname, middleName, login, password)){
-                val student = Student( firstName, surname,
-                    middleName, StudentGroup(studentGroupProgram, studentGroupNumber).id, login, password)
+                val student = Student( name = firstName, surname =  surname,
+                    middleName = middleName, groupID = StudentGroup(academicProgram =
+                    studentGroupProgram, groupNumber = studentGroupNumber).id,
+                    login = login, password = password)
                 studentViewModel.upsert(student)
             }
         }

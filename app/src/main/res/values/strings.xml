@@ -14,6 +14,7 @@
     <string name="sign_up_name">enter name</string>
     <string name="sign_up_surname">enter surname</string>
     <string name="sign_up_middlename">enter middle name</string>
+    <string name="greetings_for_student">Welcome, %1$s</string>
     <string-array name="groups">
         <item>IK-13</item>
         <item>IK-12</item>
