@@ -1,22 +1,17 @@
 package com.example.coursework.ViewModel
 
-import android.app.Application
-import android.content.Context
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.example.coursework.CurrentControlApplication
-import com.example.coursework.DAO.CurrentControlDatabase
 import com.example.coursework.Model.Teacher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 
-class TeacherViewModel(application: Application) : AndroidViewModel(application) {
+class TeacherViewModel: ViewModel() {
     private val teacherDAO = CurrentControlApplication().database.getTeacherDAO()
 
     fun upsertTeacher(teacher: Teacher) {

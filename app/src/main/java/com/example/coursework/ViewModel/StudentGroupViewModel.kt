@@ -1,17 +1,13 @@
 package com.example.coursework.ViewModel
 
-import android.app.Application
-import android.content.Context
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coursework.CurrentControlApplication
-import com.example.coursework.DAO.CurrentControlDatabase
 import com.example.coursework.Model.StudentGroup
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class StudentGroupViewModel(application: Application): AndroidViewModel(application) {
+class StudentGroupViewModel: ViewModel() {
     private val studentGroupDAO = CurrentControlApplication().database.getStudentGroupDAO()
 
     fun upsertGroup(studentGroup: StudentGroup){
