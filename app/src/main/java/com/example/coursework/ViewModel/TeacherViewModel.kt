@@ -1,5 +1,6 @@
 package com.example.coursework.ViewModel
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
@@ -11,8 +12,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 
-class TeacherViewModel: ViewModel() {
-    private val teacherDAO = CurrentControlApplication().database.getTeacherDAO()
+class TeacherViewModel(): ViewModel() {
+    private val teacherDAO = CurrentControlApplication().getDatabase(CurrentControlApplication.getApplicationContext()).getTeacherDAO()
 
     fun upsertTeacher(teacher: Teacher) {
         viewModelScope.launch(Dispatchers.IO) {

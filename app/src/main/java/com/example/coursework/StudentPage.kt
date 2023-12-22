@@ -22,7 +22,7 @@ class StudentPage : AppCompatActivity() {
         setContentView(studentPage.root)
 
         studentPage.subjectRecyclerView.layoutManager = LinearLayoutManager(this)
-        val db = CurrentControlApplication().database
+        val db = CurrentControlApplication().getDatabase(CurrentControlApplication.getApplicationContext())
         /*
         val subjects = SubjectViewModel(application)
         val teachers = TeacherViewModel

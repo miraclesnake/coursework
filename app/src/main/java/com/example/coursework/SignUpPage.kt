@@ -22,13 +22,15 @@ class SignUpPage : AppCompatActivity() {
     private lateinit var teacherViewModel: TeacherViewModel
     private lateinit var currentControlDatabase: CurrentControlDatabase
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sign = ActivitySignUpPageBinding.inflate(layoutInflater)
         setContentView(sign.root)
 
         val currentControlApplication = (application as CurrentControlApplication)
-        val currentControlDatabase = currentControlApplication.database
+        val currentControlDatabase = currentControlApplication.getDatabase(CurrentControlApplication.getApplicationContext())
 
         studentViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(application)).get(StudentViewModel::class.java)
         teacherViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(application)).get(TeacherViewModel::class.java)

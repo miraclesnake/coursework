@@ -1,5 +1,6 @@
 package com.example.coursework.ViewModel
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coursework.CurrentControlApplication
@@ -7,8 +8,8 @@ import com.example.coursework.Model.StudentGroup
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class StudentGroupViewModel: ViewModel() {
-    private val studentGroupDAO = CurrentControlApplication().database.getStudentGroupDAO()
+class StudentGroupViewModel(): ViewModel() {
+    private val studentGroupDAO = CurrentControlApplication().getDatabase(CurrentControlApplication.getApplicationContext()).getStudentGroupDAO()
 
     fun upsertGroup(studentGroup: StudentGroup){
         viewModelScope.launch(Dispatchers.IO){
