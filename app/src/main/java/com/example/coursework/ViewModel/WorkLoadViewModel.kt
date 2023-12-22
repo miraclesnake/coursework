@@ -1,5 +1,6 @@
 package com.example.coursework.ViewModel
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coursework.CurrentControlApplication
@@ -9,8 +10,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 
-class WorkLoadViewModel: ViewModel() {
-    private val workLoadDAO = CurrentControlApplication().database.getWorkLoadDAO()
+class WorkLoadViewModel(): ViewModel() {
+    private val workLoadDAO = CurrentControlApplication().getDatabase(CurrentControlApplication.getApplicationContext()).getWorkLoadDAO()
 
     fun upsert(workLoad: WorkLoad){
         viewModelScope.launch(Dispatchers.IO){
