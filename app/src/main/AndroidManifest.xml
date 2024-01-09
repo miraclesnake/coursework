@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
-        android:name=".CurrentControlApplication"
+        android:name=".dao.CurrentControlApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -14,16 +14,22 @@
         android:theme="@style/Theme.CourseWork"
         tools:targetApi="31">
         <activity
-            android:name=".TeacherPage"
+            android:name=".teacherSide.TeachersGroupPage"
             android:exported="false" />
         <activity
-            android:name=".StudentPage"
+            android:name=".studentSide.LessonActivity"
             android:exported="false" />
         <activity
-            android:name=".SignUpPage"
+            android:name=".teacherSide.TeacherPage"
             android:exported="false" />
         <activity
-            android:name=".LogInPage"
+            android:name=".studentSide.StudentPage"
+            android:exported="false" />
+        <activity
+            android:name=".entryPages.SignUpPage"
+            android:exported="false" />
+        <activity
+            android:name=".entryPages.LogInPage"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

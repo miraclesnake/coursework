@@ -3,6 +3,8 @@ package com.example.coursework
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.coursework.entryPages.LogInPage
+import com.example.coursework.entryPages.SignUpPage
 import com.example.coursework.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

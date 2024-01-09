@@ -15,13 +15,18 @@
     <string name="sign_up_surname">enter surname</string>
     <string name="sign_up_middlename">enter middle name</string>
     <string name="greetings_for_student">Welcome, %1$s</string>
+    <string name="greetings_for_teacher">Welcome, %1$s</string>
     <string-array name="groups">
-        <item>IK-13</item>
-        <item>IK-12</item>
-        <item>IK-11</item>
-        <item>IA-11</item>
-        <item>IA-12</item>
-        <item>IA-13</item>
+        <item>IА-11</item>
+        <item>IА-12</item>
+        <item>IА-13</item>
+        <item>IA-14</item>
+        <item>IК-11</item>
+        <item>IК-12</item>
+        <item>IК-13</item>
+        <item>IС-11</item>
+        <item>IС-12</item>
+        <item>IС-13</item>
     </string-array>
     <string-array name="positions">
         <item>Викладач</item>
